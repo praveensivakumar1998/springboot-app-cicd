@@ -1,2 +1,2 @@
-###CICD operation for SpringBoot application
+### CICD operation for SpringBoot application
 
