@@ -92,12 +92,24 @@ sudo usermod -aG docker ubuntu
   
 * Build your Pipeline project
   ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/e59df827-da13-43a0-83e8-78183bce808c)
-## Now you Continous Integration CI process is build successfully 
+# Now you Continous Integration CI process is build successfully 
    -  Sonarqube Code Vulnerability Check - Passed :tada:
    -  DockerHub Image Push - Passed :tada:
    -  Github commit for updated image in Deployment.yaml manifest - Passed :tada:
 
   ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/1fd89ed7-0377-4d61-a42b-41fd393c81d4)
 
+## Continous Delivery steps:
+* Create a EC2 machine for Kubernetes cluster as kops server.
+* Create Kubernetes cluster using Kops - refer this document [ https://github.com/praveensivakumar1998/Creating-Kubernetes-cluster-using-kops.git ]
+* Install ArgoCD operator in Kubernetes cluster [ https://operatorhub.io/operator/argocd-operator ]
+```
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.27.0/install.sh | bash -s v0.27.0
+kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
+kubectl get pods -n operators
+```
+![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/9cfa6f3a-6063-4b46-ae75-ccb35f19133b)
 
+* Install ArgoCD Server in a kubernetes cluster [ https://argocd-operator.readthedocs.io/en/latest/usage/basics/ ]
+* 
 
