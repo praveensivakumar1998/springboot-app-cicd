@@ -111,5 +111,46 @@ kubectl get pods -n operators
 ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/9cfa6f3a-6063-4b46-ae75-ccb35f19133b)
 
 * Install ArgoCD Server in a kubernetes cluster [ https://argocd-operator.readthedocs.io/en/latest/usage/basics/ ]
-* 
+  * copy the argocd-basic.yaml
+```
+sudo nano argocd-server.yaml (paste the manifest content)
+kubectl create -f argocd-server.yaml
+kubectl get pods
+```
+* Change argocd server service *ClusterIP* to *NodePort*
+```
+kubectl get svc
+```
+  ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/e47e3e14-4052-40b8-b575-fb3fd4b5d987)
+
+```
+kubectl edit svc example-argocd-server
+```
+  ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/1b8f71e0-3091-4d83-9c63-0fe7ff66c044)
+
+* Validate the ArgoCD server is working (http://nodeip:30639/)
+  ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/2db6de57-8cbe-40dd-b9c6-4f692256fab8)
+
+* Decrypt the ArgoCD password and username as *admin*
+```
+kubectl edit secret example-argocd-cluster
+echo *paste the encrypted pwd in data section* | base64 -d
+```
+* Login to the ArgoCD console
+  ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/db2d0ba5-5c1e-487a-90ec-3c3c1712bdc1)
+* Create Application for a Springboot app 
+  ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/f968e713-b2f5-44c4-8296-717753fc2efe)
+---
+  ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/60df5923-024d-4082-acef-b2d66d4a42e7)
+---
+## Continous Delivery is completed
+  - Create a pods in kubernetes cluster - Passed :tada:
+  ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/7d1baa16-acc9-46cf-9578-c244f6c19c53)
+---
+![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/a6ff046b-45e7-439e-b163-0023d7fb9cd8)
+---
+
+# Application is working fine, now
+  ![image](https://github.com/praveensivakumar1998/springboot-app-cicd/assets/108512714/90e35fbc-21ab-4a26-b88c-cc630fdaf1b6)
+
 
